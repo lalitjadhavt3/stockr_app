@@ -168,25 +168,38 @@
                 <div class="row custom-gutters-20">
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-one" style="background-image: url(assets/img/bg/3.png);">
-                            <h6>Income</h6>
+                            <a href="edit_rate.php"><h6>Todays Rate</h6></a>
                             <h5>$58,968.00</h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-two" style="background-image: url(assets/img/bg/3.png);">
-                            <h6>Expenses</h6>
-                            <h5>$50,968.00</h5>
+                            <a href="customer.php"><h6>Send Create</h6></a>
+
+                            <h5>
+                                <?php
+                                  require 'dbconnect.php';
+                                  $query = "SELECT count(id) as total_ord FROM rates where id ='$id'";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["total_ord"];
+                                   }}?>
+                                       
+                                   </h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-three" style="background-image: url(assets/img/bg/3.png);">
-                            <h6>Total Bills</h6>
+                            <a href="customer.php"><h6>Receive Create</h6></a>
                             <h5>$50,968.00</h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-four" style="background-image: url(assets/img/bg/3.png);">
-                            <h6>Savings</h6>
+                            <a href="customer.php"><h6>Total Customer</h6></a>
                             <h5>$58.00</h5>
                         </div>
                     </div>
