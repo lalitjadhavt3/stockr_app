@@ -29,14 +29,14 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="input1">₹</span>
                                                 </div>
-                                                <input type="text" id ="item_rate_input" class=" form-control form-control-lg" value="'.$item_rate.'">
+                                                <input type="number" id ="item_rate_input" class=" form-control form-control-lg" value="'.$item_rate.'">
                                             </div>
                                         </div>
                                         <div class="form-group basic col-6">
                                             <label class="label">No. of Crates</label>
                                             <div class="input-group mb-3">
                                                 
-                                                <input type="text" class="form-control form-control-lg" value="2">
+                                                <input type="number" class="form-control form-control-lg"  id ="crates_total" >
                                             </div>
                                         </div>
                                         <div class="form-group basic ">
@@ -48,7 +48,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input readonly type="text" class="form-control form-control-lg" value="2">
+                                                        <input type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="total_amt" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input type="text" class="form-control form-control-lg" value="2">
+                                                        <input type="number" style="text-align:end" class="form-control form-control-lg" id ="paid_amt">
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,7 +72,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input type="text"  readonly class="form-control form-control-lg" value="2">
+                                                        <input type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="balance_amt">
                                                     </div>
                                                 </div>
                                             </div>

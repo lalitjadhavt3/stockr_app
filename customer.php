@@ -158,9 +158,15 @@
     <!-- All Js File here -->
     <script src="assets\js\vendor.js"></script>
     <script src="assets\js\main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <script type="text/javascript">
         
-   
+            var item_rate;
+            var total_crates;
+            var total_amt;
+            var paid_amt;
+            var balance_amt;
        
             $("#div_parent_cust").on("click", ".ba-send_crate", function(){
                 var cust_id = $(this).data('userid');
@@ -175,22 +181,107 @@
 
                         $('#modal_content_data').html(data);
                          item_rate =  $('#item_rate_input').val();
-                         
-                    }
+                         item_rate = parseFloat(item_rate);                    }
                 });
                 $(".add-balance-inner-wrap").toggleClass("add-balance-inner-wrap-show", "linear");
                
             });
-            $('body').on('click', function(event) {
+            /*$('body').on('click', function(event) {
                 if (!$(event.target).closest('.ba-send_crate').length && !$(event.target).closest('.add-balance-inner-wrap').length) {
                     $('.add-balance-inner-wrap').removeClass('add-balance-inner-wrap-show');
                 }
-            });
+            });*/
             $("#modal_inner_content").on("click", ".btn_close", function(){
            
                 $('.add-balance-inner-wrap').removeClass('add-balance-inner-wrap-show');
             })
-            
+            $("#modal_inner_content").on("keyup", "#crates_total", function(){
+                if($(this).val() != "")
+                {
+                    crates_total = parseFloat($(this).val());
+                    if(crates_total > 0)
+                    {
+                        total_amt = crates_total * parseFloat($('#item_rate_input').val());
+                        $("#total_amt").val(total_amt);
+                    }
+                    else
+                    {
+                        total_amt = 0;
+                        $("#total_amt").val(total_amt);
+                    }
+                }
+                else
+                {
+                        total_amt = 0;
+                        $("#total_amt").val(total_amt);
+                }
+                $("#paid_amt").val(0);
+                $("#balance_amt").val(0);
+                
+            });
+            $("#modal_inner_content").on("keyup", "#item_rate_input", function(){
+                if($(this).val() != "")
+                {
+                    item_rate = parseFloat($(this).val());
+                    if(item_rate > 0)
+                    {
+
+                        total_amt = parseFloat($('#crates_total').val()) * item_rate;
+                         $("#total_amt").val(total_amt);
+                    }
+                    else
+                    {
+                        total_amt = 0;
+                        $("#total_amt").val(total_amt);
+                    }
+                }
+                else
+                {
+                        total_amt = 0;
+                        $("#total_amt").val(total_amt);
+                }
+                $("#paid_amt").val(0);
+                $("#balance_amt").val(0);
+            });
+            $("#modal_inner_content").on("keyup", "#paid_amt", function(){
+                if($(this).val() != "")
+                {
+                    total_amt =  $("#total_amt").val();
+                    paid_amt =  parseFloat($(this).val());
+                    if(total_amt > 0)
+                    {
+                        
+                        if(paid_amt <= total_amt)
+                        {
+                            balance_amt = total_amt - paid_amt;
+                            $("#balance_amt").val(balance_amt);
+                        }
+                        else
+                        {
+                            swal('Enter Correct Paid Amount',' Paid amount must be less than total amount','warning').then((value) => {
+                            
+                        });
+                        }
+                        
+                    }
+                    else
+                    {
+                        swal('Total Amount is not Correct!',' Please Enter correct no of crates and rate','error').then((value) => 
+                        {
+                             window.location.reload();
+                        });
+                    }
+                    
+                    
+                    
+                }
+                else
+                {
+                        balance_amt = 0;
+                        $("#balance_amt").val(balance_amt);
+                }
+                
+            });
        
     </script>
 
