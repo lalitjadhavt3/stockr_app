@@ -1,4 +1,29 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    require 'dbconnect.php';
+    @session_start();
+    //print_r($_SESSION);
+    // Check if the user is logged in, if not then redirect him to login page
+    if((!empty($_SESSION["usertype"])) && (!empty($_SESSION['user_id'])))
+      {
+        if($_SESSION["usertype"]==1)
+          {
+          
+          } 
+         
+          else
+          {
+            echo" you are not recognized"; 
+            session_destroy();
+            exit;
+          }
+      }
+      else{
+         header("location: login.php");exit;
+       }
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,123 +51,15 @@
     </div>
    
     <!-- header start -->
-    <div class="header-area" style="background-image: url(assets/img/bg/1.png);">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-3">
-                    <div class="menu-bar">
-                        <i class="fa fa-bars"></i>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-4 text-center">
-                    <a href="home.html" class="logo">
-                        <img src="assets\img\logo.png" alt="logo">
-                    </a>
-                </div>
-                <div class="col-sm-4 col-5 text-right">
-                    <ul class="header-right">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i>
-                                <span class="badge">9</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="notification.html">
-                                <i class="fa fa-bell animated infinite swing"></i>
-                                <span class="badge">6</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="header-user" href="user-setting.html"><img src="assets\img\user.png" alt="img"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'header.php'; ?>
     <!-- header end -->
 
     <!-- navbar end -->
-    <div class="ba-navbar">
-        <div class="ba-navbar-user">
-            <div class="menu-close">
-                <i class="la la-times"></i>
-            </div>
-            <div class="thumb">
-                <img src="assets\img\user.png" alt="user">
-            </div>
-            <div class="details">
-                <h5>Raduronto kelax</h5>
-                <p>ID: 99883323</p>
-            </div>
-        </div>
-        <div class="ba-add-balance-title">
-            <h5>Add Balance</h5>
-            <p>$458786.00</p>
-        </div>
-        <div class="ba-add-balance-title style-two">
-            <h5>Deposit</h5>
-            <i class="fa fa-plus"></i>
-        </div>
-        <div class="ba-main-menu">
-            <h5>Menu</h5>
-            <ul>
-                <li><a href="index.php">Bankapp Display</a></li>
-                <li><a href="all-page.html">Pages</a></li>
-                <li><a href="component.html">Components</a></li>
-                <li><a href="carts.html">My Cart</a></li>
-                <li><a href="user-setting.html">Setting</a></li>
-                <li><a href="notification.html">Notification</a></li>
-                <li><a href="signup.html">Logout</a></li>
-            </ul>
-            <a class="btn btn-purple" href="#">View Profile</a>
-        </div>
-    </div>
+    
     <!-- navbar end -->
 
     <!-- navbar end -->
-    <div class="add-balance-inner-wrap">
-        <div class="container">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Balance</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="action-sheet-content">
-                            <form action="index.html">
-                                <div class="form-group basic">
-                                    <div class="input-wrapper">
-                                        <label class="label" for="account1">From</label>
-                                        <select class="form-control custom-select" id="account1">
-                                            <option value="0">Investment (*** 7284)</option>
-                                            <option value="1">Savings (*** 5078)</option>
-                                            <option value="2">Deposit (*** 2349)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="input1">$</span>
-                                        </div>
-                                        <input type="text" class="form-control form-control-lg" value="768">
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn-c btn-primary btn-block btn-lg" data-dismiss="modal">Deposit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- navbar end -->
 
     <!-- balance start -->
@@ -150,7 +67,7 @@
         <div class="container">
             <div class="balance-area-bg balance-area-bg-home">
                 <div class="balance-title text-center">
-                    <h6>Welcome! <br> Dear Mr Suvro - Bankapp Wallet</h6>
+                    <h6>Welcome! <b><?php echo $_SESSION["username"];?></b></h6>
                 </div>
                 <div class="ba-balance-inner text-center">
                     
@@ -161,25 +78,38 @@
      <div class="history-area pd-top-40">
         <div class="container">
             <div class="section-title">
-                <h3 class="title">History</h3>
-                <a href="#">View All</a>
+                <h3 class="title">Analytics</h3>
+                
             </div>
             <div class="ba-history-inner">
                 <div class="row custom-gutters-20">
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-one" style="background-image: url(assets/img/bg/3.png);">
-                            <a href="edit_rate.php"><h6>Todays Rate</h6></a>
-                            <h5>$58,968.00</h5>
+                            <a href="edit_rate.php?id=1"><h6 style="text-align: center;">Todays Rate</h6></a>
+                            <h5 style="text-align: center;">
+                                <?php
+                                 
+                                   $query = "SELECT * FROM rates";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["item_rate"];
+                                   }}?>
+                                       
+                                   
+                            </h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-two" style="background-image: url(assets/img/bg/3.png);">
-                            <a href="customer.php"><h6>Send Create</h6></a>
+                            <a href="customer.php"><h6 style="text-align: center;">Send Create</h6></a>
 
-                            <h5>
+                            <h5 style="text-align: center;">
                                 <?php
-                                  require 'dbconnect.php';
-                                  $query = "SELECT count(id) as total_ord FROM rates where id ='$id'";
+                                 
+                                  $query = "SELECT count(id) as total_ord FROM rates";
                                                            
                                   if ($result = $conn->query($query)) 
                                    {
@@ -193,14 +123,37 @@
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-three" style="background-image: url(assets/img/bg/3.png);">
-                            <a href="customer.php"><h6>Receive Create</h6></a>
-                            <h5>$50,968.00</h5>
+                            <a href="customer.php"><h6 style="text-align: center;">Receive Create</h6></a>
+                            <h5 style="text-align: center;">
+                                <?php
+                                 
+                                  $query = "SELECT * FROM rates";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["item_rate"];
+                                   }}?>
+                                       
+                            </h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ba-single-history ba-single-history-four" style="background-image: url(assets/img/bg/3.png);">
-                            <a href="customer.php"><h6>Total Customer</h6></a>
-                            <h5>$58.00</h5>
+                            <a href="customer.php"><h6 style="text-align: center;">Total Customer</h6></a>
+                            <h5 style="text-align: center;">
+                                <?php
+                                 
+                                  $query = "SELECT count(c_id) as total_ord FROM customer";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["total_ord"];
+                                   }}?>
+                               </h5>
                         </div>
                     </div>
                 </div>
@@ -216,16 +169,16 @@
             <div class="ba-add-balance-inner mg-top-40">
                 <div class="row custom-gutters-20">
                     <div class="col-6">
-                        <a class="btn btn-blue ba-add-balance-btn" href="customer.php">Customer <i class="fa fa-arrow-down"></i></a>
+                        <a class="btn btn-blue ba-add-balance-btn" href="customer.php"><i class="fa fa-users"></i>  Customers </a>
                     </div>
                     <div class="col-6">
-                        <a class="btn btn-red ba-add-balance-btn" href="#">Send <i class="fa fa-arrow-right"></i></a>
+                        <a class="btn btn-red ba-add-balance-btn" href="customer.php"><i class="fa fa-upload"></i>  Send</a>
                     </div>
                     <div class="col-6">
-                        <a class="btn btn-purple ba-add-balance-btn" href="#">Receive <i class="fa fa-arrow-down"></i></a>
+                        <a class="btn btn-purple ba-add-balance-btn" href="customer.php"> <i class="fa fa-download"></i> Receive</a>
                     </div>
                     <div class="col-6">
-                        <a class="btn btn-green ba-add-balance-btn" href="#">Report <i class="fa fa-credit-card-alt "></i></a>
+                        <a class="btn btn-green ba-add-balance-btn" href="report.php"> <i class="fa fa-clipboard"></i> Report</a>
                     </div>
                 </div>
             </div>
@@ -248,7 +201,7 @@
     <!-- transaction start -->
     <div class="transaction-area pd-top-40">
         <div class="container">
-            <div class="section-title">
+              <div class="section-title">
                 <h3 class="title">Transactions</h3>
                 <a href="#">View All</a>
             </div>
