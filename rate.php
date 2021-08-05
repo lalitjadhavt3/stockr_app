@@ -71,18 +71,50 @@
         <div class="container">
             
             <div class="ba-cart-inner mb-3 " style="width: 48%;display: inline-block;margin: unset;background-image: url(assets/img/bg/4.png);">
+              
+
+
                 
-                <div class="row">
-                   <i class="fa fa-shopping-cart" style="margin-left: 5rem; font-size: x-large; color: #fff"></i>
+                <div class="row" style="justify-content: center;">
+                   <i class="fa fa-shopping-cart" style=" font-size: 4rem; color: #fff"></i>
                 </div>
-                <a href="edit_sale_rate.php"><p class="text-center" style="font-size: large;">Sale</p></a>
+                <a href="edit_sale_rate.php"><p class="text-center" style="font-size: 1.2rem;font-weight: bold">Sale<br/>
+
+                   <?php
+                                 
+                                   $query = "SELECT * FROM rates";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["minimum_sell_rate"];
+                                   }}?>
+
+
+
+                  </p></a>
             </div>
 
             <div class="ba-cart-inner mb-3 " style="width: 48%;display: inline-block;margin: unset;background-image: url(assets/img/bg/10.png);">
-                <div class="row">
-                   <i class="fa fa-credit-card"  style="margin-left: 5rem; font-size: x-large; color: #fff"></i>
+                <div class="row" style="justify-content: center;">
+                   <i class="fa fa-credit-card"  style=" font-size: 4rem; color: #fff"></i>
                 </div>
-                <a href="edit_purchase_rate.php"><p class="text-center" style="font-size: large;">Purchase</p></a>
+                <a href="edit_purchase_rate.php"><p class="text-center" style="font-size: 1.2rem;font-weight: bold">Purchase<br/>
+
+                  <?php
+                                 
+                                   $query = "SELECT * FROM rates";
+                                                           
+                                  if ($result = $conn->query($query)) 
+                                   {
+                                  while ($data = $result->fetch_assoc()) 
+                                   {
+                                    echo $data["min_purchase_price"];
+                                   }}?>
+                </p></a>
+
+
             </div>
 
             

@@ -75,8 +75,8 @@
 
                     <?php
                                                     require 'dbconnect.php';
-                                                    $id = $_GET["id"];
-                                                    $query = "SELECT * FROM rates where id = '$id'";
+                                                    
+                                                    $query = "SELECT * FROM rates where id = '1'";
                                                     if ($result = $conn->query($query)) 
                                                     {
                                                      while ($row = $result->fetch_assoc()) 
@@ -150,7 +150,7 @@
               var formData = new FormData($("#form_edit_rate")[0]);
                $.ajax({
                     type:"POST",
-                    url:"edit/edit_rate_submit.php",
+                    url:"edit/edit_sale_rate_submit.php",
                     data:formData,
                     processData: false,
                     cache: false,
