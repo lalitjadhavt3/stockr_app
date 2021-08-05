@@ -89,21 +89,18 @@
                      <form class="contact-form-inner" method="post" id="form_edit_rate">
                         <input type="hidden" name="id" value="<?php echo $id;?> ">
 
-                     <label class="single-input-wrap">
-                            <span>Item Name</span>
-                            <input type="text" id="item_name" readonly name="item_name" placeholder="Item Name" required value="<?php echo $item_name;?>">
-                        </label>
+                    
                         <label class="single-input-wrap">
-                            <span>Current Rate</span>
+                            <span>Current Selling Rate</span>
                             <input type="text" id="item_rate" readonly name="item_rate" placeholder="Current Rate" required value="<?php echo $item_rate;?>">
                         </label>
                         <label class="single-input-wrap">
-                            <span>New Rate</span>
+                            <span>New Selling Rate</span>
                             <input type="number" id="new_rate" name="new_rate" placeholder="New Rate" required value="<?php echo $new_rate;?>">
                         </label>
 
                         <label class="single-input-wrap">
-                            <span>Minimum Sell Rate</span>
+                            <span>Minimum Selling Rate</span>
                             <input type="number" id="minimum_sell_rate" name="minimum_sell_rate" placeholder="Minimum Sell Rate" required value="<?php echo $minimum_sell_rate;?>">
                         </label>
                         

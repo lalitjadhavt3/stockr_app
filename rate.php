@@ -67,62 +67,27 @@
     <!-- page-title end -->
 
     <!-- contact start -->
-    <div class="transaction-area pd-top-36">
+    <div class="cart-area pd-top-36">
         <div class="container">
             
-            <div class="signin-area">
-                <div class="container">
+            <div class="ba-cart-inner mb-3 " style="width: 48%;display: inline-block;margin: unset;background-image: url(assets/img/bg/4.png);">
+                
+                <div class="row">
+                   <i class="fa fa-shopping-cart" style="margin-left: 5rem; font-size: x-large; color: #fff"></i>
+                </div>
+                <a href="edit_sale_rate.php"><p class="text-center" style="font-size: large;">Sale</p></a>
+            </div>
 
-                    <?php
-                                                    require 'dbconnect.php';
-                                                    $id = $_GET["id"];
-                                                    $query = "SELECT * FROM rates where id = '$id'";
-                                                    if ($result = $conn->query($query)) 
-                                                    {
-                                                     while ($row = $result->fetch_assoc()) 
-                                                     { 
-                                                        extract($row);
-                                                     }
-                                                 }
-                                                 ?>
+            <div class="ba-cart-inner mb-3 " style="width: 48%;display: inline-block;margin: unset;background-image: url(assets/img/bg/10.png);">
+                <div class="row">
+                   <i class="fa fa-credit-card"  style="margin-left: 5rem; font-size: x-large; color: #fff"></i>
+                </div>
+                <a href="edit_purchase_rate.php"><p class="text-center" style="font-size: large;">Purchase</p></a>
+            </div>
 
-                     <form class="contact-form-inner" method="post" id="form_edit_rate">
-                        <input type="hidden" name="id" value="<?php echo $id;?> ">
-
-                     <label class="single-input-wrap">
-                            <span>Item Name</span>
-                            <input type="text" id="item_name" readonly name="item_name" placeholder="Item Name" required value="<?php echo $item_name;?>">
-                        </label>
-                        <label class="single-input-wrap">
-                            <span>Current Rate</span>
-                            <input type="text" id="item_rate" readonly name="item_rate" placeholder="Current Rate" required value="<?php echo $item_rate;?>">
-                        </label>
-                        <label class="single-input-wrap">
-                            <span>New Rate</span>
-                            <input type="number" id="new_rate" name="new_rate" placeholder="New Rate" required value="<?php echo $new_rate;?>">
-                        </label>
-
-                        <label class="single-input-wrap">
-                            <span>Minimum Sell Rate</span>
-                            <input type="number" id="minimum_sell_rate" name="minimum_sell_rate" placeholder="Minimum Sell Rate" required value="<?php echo $minimum_sell_rate;?>">
-                        </label>
-                        
-                                    
-                          <div class="row text-center">
-
-                             <div class="col-6">
-                           <button type="button" onclick="window.location.href='index.php'" class="btn btn-dark" style="margin-left: 1rem;">Cancel</button>
-                           </div>
-                          <div class="col-6">
-                          <button type="submit" id="submit" class="btn btn-success">Save</button>
-                          </div>
-                         
-                          </div>
-                         </form>
-                         </div>
-                        </div>
-                         </div>
-                         </div>
+            
+        </div>
+    </div>
 
     <?php include 'scripts.php';?>
 
