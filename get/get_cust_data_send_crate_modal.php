@@ -29,14 +29,17 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="input1">₹</span>
                                                 </div>
-                                                <input type="number" id ="item_rate_input" class=" form-control form-control-lg" value="'.$item_rate.'">
+                                                <input type="number" id ="item_rate_input" class=" form-control form-control-lg" required value="'.$item_rate.'">
+                                                <input type="hidden" id ="minimum_sell_rate" class=" form-control form-control-lg" value="'.$minimum_sell_rate.'" required>
+                                                <input type="hidden" id ="cid" class=" form-control form-control-lg" value="'.$data["c_id"].'" >
+                                                <input type="hidden" id ="item_rate_current" class=" form-control form-control-lg" value="'.$item_rate.'" required>
                                             </div>
                                         </div>
                                         <div class="form-group basic col-6">
                                             <label class="label">No. of Crates</label>
                                             <div class="input-group mb-3">
                                                 
-                                                <input type="number" class="form-control form-control-lg"  id ="crates_total" >
+                                                <input type="number" class="form-control form-control-lg" required id ="crates_total" >
                                             </div>
                                         </div>
                                         <div class="form-group basic ">
@@ -48,7 +51,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="total_amt" >
+                                                        <input required type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="total_amt" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +63,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input type="number" style="text-align:end" class="form-control form-control-lg" id ="paid_amt">
+                                                        <input type="number" style="text-align:end" class="form-control form-control-lg" id ="paid_amt" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,20 +75,23 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="balance_amt">
+                                                        <input type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="balance_amt" required>
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            
+
+
                                         </div>
-                                        
+                                          
                                     </div>
                                     <div class="form-group basic row">
                                             <div class="col-6">
                                                 <button type="button"  class="btn_close btn-c btn-dark btn-block btn-lg">Cancel</button>
                                             </div>
                                             <div class="col-6">
-                                                <button type="button" class="btn-c btn-success btn-block btn-lg">Send</button>
+                                                <button id="send_btn" type="submit" class="btn-c btn-success btn-block btn-lg">Send</button>
                                             </div>
 
                                             
