@@ -3,7 +3,7 @@
  $dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "";
- $db = "dairy";
+ $db = "stockr_app";
  $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
 
  if ($conn->connect_error) {
