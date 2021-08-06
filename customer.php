@@ -78,9 +78,7 @@
     <div class="page-title mg-top-50">
         
     </div>
-    <div id="cust_send_crate_data" style="display: none;">
-        
-    </div>
+    
     <!-- page-title end -->
     <div class="add-balance-inner-wrap" id="modal_inner_content">
             <div class="container">
@@ -167,6 +165,7 @@
             var total_amt;
             var paid_amt;
             var balance_amt;
+            var minimum_sell_rate;
        
             $("#div_parent_cust").on("click", ".ba-send_crate", function(){
                 var cust_id = $(this).data('userid');
@@ -186,6 +185,7 @@
                 $(".add-balance-inner-wrap").toggleClass("add-balance-inner-wrap-show", "linear");
                
             });
+
             /*$('body').on('click', function(event) {
                 if (!$(event.target).closest('.ba-send_crate').length && !$(event.target).closest('.add-balance-inner-wrap').length) {
                     $('.add-balance-inner-wrap').removeClass('add-balance-inner-wrap-show');
@@ -195,6 +195,27 @@
            
                 $('.add-balance-inner-wrap').removeClass('add-balance-inner-wrap-show');
             })
+
+
+             $("#modal_inner_content").on("blur", "#item_rate_input", function(){
+
+                current_val = parseFloat($(this).val());
+                minimum_sell_rate = parseFloat($("#minimum_sell_rate").val());
+                 if(current_val < minimum_sell_rate)
+                {
+                   
+                    
+                   swal('Enter Value more than Min Selling Rate',' MIn Selling rate is :'+minimum_sell_rate,'warning').then((value) => {
+
+                    });
+
+
+               
+
+                 }
+             });
+
+          
             $("#modal_inner_content").on("keyup", "#crates_total", function(){
                 if($(this).val() != "")
                 {
@@ -282,10 +303,53 @@
                 }
                 
             });
-       
+
+            $("#modal_inner_content").on("submit", "#form_send_crate", function(){
+
+                 var formData = new FormData();
+                  item_rate_current = $("#item_rate_current").val();
+                  item_rate_admin_given = $("#item_rate_input").val();
+                  total_crates = $("#crates_total").val();
+                  total_amt = total_amt;
+                  paid_amt = paid_amt;
+                  balance_amt = balance_amt;
+                  minimum_sell_rate = $("#minimum_sell_rate").val();
+                  cid = $("#cid").val();
+
+                  formData.append("item_rate_current",item_rate_current);
+                  formData.append("item_rate_admin_given",item_rate_admin_given);
+                  formData.append("total_crates",total_crates);
+                  formData.append("total_amt",total_amt);
+                  formData.append("paid_amt",paid_amt);
+                  formData.append("balance_amt",balance_amt);
+                  formData.append("minimum_sell_rate",minimum_sell_rate);
+                  formData.append("cid",cid);
+
+
+
+
+                
+                $.ajax({
+                        type:"POST",
+                        url:"submit/cust_send_crate_data.php",
+                        data:formData,
+                        processData: false,
+                        cache: false,
+                        contentType: false,
+                        success: function(data){
+                           swal('Customer Added!','','success').then((value) => {
+                  window.location.href='customer.php';
+                });
+                        }
+                    });
+                
+                return false;
+            });
+             
+           
     </script>
 
-     
+
 </body>
 
 </html>
