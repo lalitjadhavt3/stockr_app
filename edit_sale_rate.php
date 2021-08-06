@@ -75,8 +75,8 @@
 
                     <?php
                                                     require 'dbconnect.php';
-                                                    $id = $_GET["id"];
-                                                    $query = "SELECT * FROM rates where id = '$id'";
+                                                    
+                                                    $query = "SELECT * FROM rates where id = '1'";
                                                     if ($result = $conn->query($query)) 
                                                     {
                                                      while ($row = $result->fetch_assoc()) 
@@ -89,21 +89,18 @@
                      <form class="contact-form-inner" method="post" id="form_edit_rate">
                         <input type="hidden" name="id" value="<?php echo $id;?> ">
 
-                     <label class="single-input-wrap">
-                            <span>Item Name</span>
-                            <input type="text" id="item_name" readonly name="item_name" placeholder="Item Name" required value="<?php echo $item_name;?>">
-                        </label>
+                    
                         <label class="single-input-wrap">
-                            <span>Current Rate</span>
+                            <span>Current Selling Rate</span>
                             <input type="text" id="item_rate" readonly name="item_rate" placeholder="Current Rate" required value="<?php echo $item_rate;?>">
                         </label>
                         <label class="single-input-wrap">
-                            <span>New Rate</span>
+                            <span>New Selling Rate</span>
                             <input type="number" id="new_rate" name="new_rate" placeholder="New Rate" required value="<?php echo $new_rate;?>">
                         </label>
 
                         <label class="single-input-wrap">
-                            <span>Minimum Sell Rate</span>
+                            <span>Minimum Selling Rate</span>
                             <input type="number" id="minimum_sell_rate" name="minimum_sell_rate" placeholder="Minimum Sell Rate" required value="<?php echo $minimum_sell_rate;?>">
                         </label>
                         
@@ -153,7 +150,7 @@
               var formData = new FormData($("#form_edit_rate")[0]);
                $.ajax({
                     type:"POST",
-                    url:"edit/edit_rate_submit.php",
+                    url:"edit/edit_sale_rate_submit.php",
                     data:formData,
                     processData: false,
                     cache: false,
