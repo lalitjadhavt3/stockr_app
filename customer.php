@@ -237,7 +237,7 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(0);
+                $("#balance_amt").val(total_amt);
                 
             });
             $("#modal_inner_content").on("keyup", "#item_rate_input", function(){
@@ -262,7 +262,7 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(0);
+                $("#balance_amt").val(total_amt);
             });
             $("#modal_inner_content").on("keyup", "#paid_amt", function(){
                 if($(this).val() != "")
@@ -315,7 +315,7 @@
                   balance_amt = balance_amt;
                   minimum_sell_rate = $("#minimum_sell_rate").val();
                   cid = $("#cid").val();
-
+                  comment = $("#comment_txt").val();
                   formData.append("item_rate_current",item_rate_current);
                   formData.append("item_rate_admin_given",item_rate_admin_given);
                   formData.append("total_crates",total_crates);
@@ -324,9 +324,8 @@
                   formData.append("balance_amt",balance_amt);
                   formData.append("minimum_sell_rate",minimum_sell_rate);
                   formData.append("cid",cid);
-
-
-
+                  formData.append("comment",comment);
+                  
 
                 
                 $.ajax({
@@ -337,9 +336,11 @@
                         cache: false,
                         contentType: false,
                         success: function(data){
-                           swal('Customer Added!','','success').then((value) => {
-                  window.location.href='customer.php';
-                });
+                           swal('Customer Added!','','success').then((value) =>
+                            {
+
+                         //window.location.href='customer.php';
+                        });
                         }
                     });
                 

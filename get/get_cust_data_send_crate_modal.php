@@ -20,7 +20,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="action-sheet-content">
-                                <form action="" method="post" id="form_send_crate">
+                                <form method="post" id="form_send_crate">
                                    
                                     <div class="row" >
                                         <div class="form-group basic col-6">
@@ -79,6 +79,31 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
+
+                                             <div id="accordion-icon-left" class="accordion-icon icon-01">
+                       
+                        <div class="widget has-shadow">
+                            
+                            <a class="card-header collapsed d-flex align-items-center" data-toggle="collapse" href="#IconLeftCollapseOne">
+                                <div class="card-title" style="font-weight:800;font-size:15px;">Add Comment</div>
+                            </a>
+                            <div id="IconLeftCollapseOne" class="card-body collapse pt-0" data-parent="#accordion-icon-left">
+
+
+
+                            <textarea id="comment_txt" ></textarea>
+                               
+                            </div>
+                            
+                           
+                            
+                            
+                           
+                           
+                        </div>
+                        <!-- End Widget -->
+                    </div>
 
                                             
 
