@@ -1680,7 +1680,8 @@ ul {
   .ba-single-transaction .details {
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
-    align-self: center; }
+    align-self: center;
+    width: 100% }
   .ba-single-transaction p {
     margin-bottom: 0;
     font-size: 12px; }
@@ -2278,21 +2279,23 @@ a.text-primary:hover {
 .accordion-icon.icon-01 .card-header:before {
   font-family: 'fontawesome';
   content: "\f106";
-  display: inline-block;
+  width: 5%;
+  float: right;
   font-size: 16px;
   vertical-align: middle;
   margin-right: 0.5rem; }
 
 .accordion-icon.icon-01 .card-header.collapsed:before {
-  content: "\f107"; }
+  content: "\f107"; width: 5%;}
 
 .accordion-icon.icon-02 .card-header:before {
   font-family: 'fontawesome';
   content: "\f068";
-  display: inline-block;
+  float: right; 
   font-size: 15px;
   vertical-align: middle;
-  margin-right: 0.5rem; }
+  margin-right: 0.5rem; 
+}
 
 .accordion-icon.icon-02 .card-header.collapsed:before {
   content: "\f067"; }
