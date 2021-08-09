@@ -1,4 +1,28 @@
-﻿<?php require "dbconnect.php"?>
+﻿<?php
+    require 'dbconnect.php';
+    @session_start();
+    //print_r($_SESSION);
+    // Check if the user is logged in, if not then redirect him to login page
+    if((!empty($_SESSION["usertype"])) && (!empty($_SESSION['user_id'])))
+      {
+        if($_SESSION["usertype"]==1)
+          {
+          
+          } 
+         
+          else
+          {
+            echo" you are not recognized"; 
+            session_destroy();
+            exit;
+          }
+      }
+      else{
+         header("location: login.php");exit;
+       }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,12 +184,12 @@
     
     <script type="text/javascript">
         
-            var item_rate;
-            var total_crates;
-            var total_amt;
-            var paid_amt;
-            var balance_amt;
-            var minimum_sell_rate;
+            var item_rate =0;
+            var total_crates = 0;
+            var total_amt =0;
+            var paid_amt = 0;
+            var balance_amt = 0;
+            var minimum_sell_rate = 0;
        
             $("#div_parent_cust").on("click", ".ba-send_crate", function(){
                 var cust_id = $(this).data('userid');
@@ -194,6 +218,7 @@
             $("#modal_inner_content").on("click", ".btn_close", function(){
            
                 $('.add-balance-inner-wrap').removeClass('add-balance-inner-wrap-show');
+                $('.add-balance-inner-wrap').find('.modal-content').remove();
             })
 
 
@@ -237,7 +262,8 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(total_amt);
+                balance_amt = total_amt;
+                $("#balance_amt").val(balance_amt);
                 
             });
             $("#modal_inner_content").on("keyup", "#item_rate_input", function(){
@@ -262,7 +288,8 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(total_amt);
+                balance_amt = total_amt;
+                $("#balance_amt").val(balance_amt);
             });
             $("#modal_inner_content").on("keyup", "#paid_amt", function(){
                 if($(this).val() != "")
@@ -311,38 +338,57 @@
                   item_rate_admin_given = $("#item_rate_input").val();
                   total_crates = $("#crates_total").val();
                   total_amt = total_amt;
-                  paid_amt = paid_amt;
-                  balance_amt = balance_amt;
+                 
                   minimum_sell_rate = $("#minimum_sell_rate").val();
                   cid = $("#cid").val();
                   comment = $("#comment_txt").val();
-                  formData.append("item_rate_current",item_rate_current);
-                  formData.append("item_rate_admin_given",item_rate_admin_given);
-                  formData.append("total_crates",total_crates);
-                  formData.append("total_amt",total_amt);
-                  formData.append("paid_amt",paid_amt);
-                  formData.append("balance_amt",balance_amt);
-                  formData.append("minimum_sell_rate",minimum_sell_rate);
-                  formData.append("cid",cid);
-                  formData.append("comment",comment);
-                  
 
-                
-                $.ajax({
-                        type:"POST",
-                        url:"submit/cust_send_crate_data.php",
-                        data:formData,
-                        processData: false,
-                        cache: false,
-                        contentType: false,
-                        success: function(data){
-                           swal('Customer Added!','','success').then((value) =>
-                            {
+                  /*console.log("item_rate_current:"+item_rate_current);
+                  console.log("item_rate_admin_given:"+item_rate_admin_given);
+                  console.log("total_crates:"+total_crates);
+                  console.log("total_amt:"+total_amt);
+                  console.log("paid_amt:"+paid_amt);
+                  console.log("balance_amt:"+balance_amt);
+                  console.log("minimum_sell_rate:"+minimum_sell_rate);
+                  console.log("cid:"+cid);
+                  console.log("comment:"+comment);*/
+                  if((item_rate_current!=undefined)&&(item_rate_admin_given!=undefined)&&(total_crates!=undefined)&&(total_amt!=undefined)&&(paid_amt!=undefined)&&(balance_amt!=undefined))
+                  {
 
-                         //window.location.href='customer.php';
+                      formData.append("item_rate_current",item_rate_current);
+                      formData.append("item_rate_admin_given",item_rate_admin_given);
+                      formData.append("total_crates",total_crates);
+                      formData.append("total_amt",total_amt);
+                      formData.append("paid_amt",paid_amt);
+                      formData.append("balance_amt",balance_amt);
+                      formData.append("minimum_sell_rate",minimum_sell_rate);
+                      formData.append("cid",cid);
+                      formData.append("comment",comment);
+                      
+
+                    
+                    $.ajax({
+                            type:"POST",
+                            url:"submit/cust_send_crate_data.php",
+                            data:formData,
+                            processData: false,
+                            cache: false,
+                            contentType: false,
+                            success: function(data){
+                              swal('Customer Added!','','success').then((value) =>
+                                {
+
+                             //window.location.href='customer.php';
+                            });
+                            }
                         });
-                        }
-                    });
+                  }
+                  else
+                  {
+                    swal("error",'','error');
+                  }
+
+
                 
                 return false;
             });

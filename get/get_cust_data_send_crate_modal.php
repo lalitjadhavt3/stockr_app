@@ -39,11 +39,11 @@
                                             <label class="label">No. of Crates</label>
                                             <div class="input-group mb-3">
                                                 
-                                                <input type="number" class="form-control form-control-lg" required id ="crates_total" >
+                                                <input type="number" class="form-control form-control-lg" required id ="crates_total">
                                             </div>
                                         </div>
-                                        <div class="form-group basic ">
-                                            <div class="row2" >
+                                        <div class="form-group basic">
+                                            <div class="row2">
                                                 <div class="col-6">
                                                     <label class="label">Total Amount</label>
                                            
@@ -51,7 +51,7 @@
                                                 <div class="col-6">
                                                     <div class="input-group mb-3">
                                                         
-                                                        <input required type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="total_amt" >
+                                                        <input required type="number" style="text-align:end"  readonly class="form-control form-control-lg" id ="total_amt">
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@
 
 
 
-                            <textarea id="comment_txt" ></textarea>
+                            <textarea class="form-control" id="comment_txt" ></textarea>
                                
                             </div>
                             

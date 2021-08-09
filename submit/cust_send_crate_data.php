@@ -1,7 +1,7 @@
 <?php
 	@session_start();
 	include "../dbconnect.php";
-	print_r($_POST);
+	extract($_POST);
 	$admin_id = $_SESSION['user_id'];
 	$transaction_date = date('d-m-Y');
 	$transaction_time = date('h:i a');
