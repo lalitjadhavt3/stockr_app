@@ -96,36 +96,41 @@
     <!-- transaction start -->
     <div class="transaction-area pd-top-36" id="div_parent_cust"> 
         <div class="container">
-            
-            <ul class="transaction-inner">
-                <?php
-                    $query = "SELECT * FROM customer";
-                    if ($result = $conn->query($query)) {
-                     
-                        while ($data = $result->fetch_assoc()) {
-                            echo '<li class="ba-single-transaction style-two">
-                                    <div class="details">
-                                        <h5>'.$data["c_id"].'-'.$data["cust_name"].'</h5>
-                                         <div class="row">
-                                            <div class="col-6">
+          
+            <div id="accordion-icon-right" class="accordion-icon icon-01">
+                <ul class="transaction-inner">
+                    <?php
+                        $query = "SELECT * FROM customer";
+                        if ($result = $conn->query($query)) {
+                         
+                            while ($data = $result->fetch_assoc()) {
+                                echo '<li class="ba-single-transaction style-two">
+                                        <div class="details">
+                                            <a class="card-header collapsed align-items-center" data-toggle="collapse" href="#'.$data["c_id"].'">
+                                                <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4></div>
+                                            </a>
+                                             <div class="row card-body collapse pt-0 "  id="'.$data["c_id"].'" data-parent="#accordion-icon-right">
+                                                <div class="col-6">
 
-                                                   <button data-userid="'.$data["c_id"].'" class="ba-send_crate" style="border-radius: 10px;background: green;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-upload"  aria-hidden="true" ></i><br>Send Crate</button>
-                                           </div>
-                                           <div class="col-6">
-                                               <button data-userid="'.$data["c_id"].'" class="ba-send_crate_empty" style="border-radius: 10px;background: cornflowerblue;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-download" aria-hidden="true"></i>Receive Empty Create</button>
-                                           </div>
+                                                       <button data-userid="'.$data["c_id"].'" class="ba-send_crate" style="border-radius: 10px;background: green;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-upload"  aria-hidden="true" ></i><br>Send Crate</button>
+                                               </div>
+                                               <div class="col-6">
+                                                   <button data-userid="'.$data["c_id"].'" class="ba-send_crate_empty" style="border-radius: 10px;background: cornflowerblue;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-download" aria-hidden="true"></i>Receive Empty Create</button>
+                                               </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>';
+                                    </li>';
+                            }
                         }
-                    }
 
-                ?>
-                
-                
-               
-                
-            </ul>
+                    ?>
+                    
+                    
+                   
+                    
+                </ul>
+           
+           </div>
         </div>
     </div>
     <!-- transaction End -->
@@ -237,7 +242,7 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(0);
+                $("#balance_amt").val(total_amt);
                 
             });
             $("#modal_inner_content").on("keyup", "#item_rate_input", function(){
@@ -262,7 +267,7 @@
                         $("#total_amt").val(total_amt);
                 }
                 $("#paid_amt").val(0);
-                $("#balance_amt").val(0);
+                $("#balance_amt").val(total_amt);
             });
             $("#modal_inner_content").on("keyup", "#paid_amt", function(){
                 if($(this).val() != "")
