@@ -130,7 +130,7 @@
                             while ($data = $result->fetch_assoc()) {
                                 echo '<li class="ba-single-transaction style-two">
                                         <div class="details">
-                                            <a class="card-header style="padding:1rem" collapsed align-items-center" data-toggle="collapse" href="#'.$data["c_id"].'">
+                                            <a   style="padding:1rem" class="card-header collapsed align-items-center" data-toggle="collapse" href="#'.$data["c_id"].'">
                                                 <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4></div>
                                             </a>
                                              <div class="row card-body collapse pt-0 "  id="'.$data["c_id"].'" data-parent="#accordion-icon-right">
