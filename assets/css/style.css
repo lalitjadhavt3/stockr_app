@@ -529,6 +529,8 @@ ul {
 ---------------------------*/
 .pd-top-36 {
   padding-top: 36px; }
+.pd-top-25p {
+  padding-top: 25%; }
 
 .pd-top-40 {
   padding-top: 40px; }

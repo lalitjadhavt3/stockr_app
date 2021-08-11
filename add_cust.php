@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-3">
-                    <a class="menu-back-page" href="home.html">
+                    <a class="menu-back-page" href="index.php">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 </div>

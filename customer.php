@@ -21,6 +21,8 @@
          header("location: login.php");exit;
        }
 
+         $loadmore = "";
+
 ?>
 
 <!DOCTYPE html>
@@ -49,31 +51,43 @@
                 align-items: baseline;
             
         }
+
+
+       
+
+
+.float{
+    position:fixed;
+    width:45px;
+    height:45px;
+    bottom:60px;
+    right:20px;
+    background-color:#5d32f7;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+    margin-top:20%;
+    font-size: 24px;
+}
+.accordion-icon .card-header
+{
+    padding: 1rem;  
+}
+
     </style>
 </head>
 
 <body>
 
     <!-- preloader area start -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <div class="spinner">
-                <div class="dot1"></div>
-                <div class="dot2"></div>
-            </div>
-        </div>
-    </div>
+    
     <!-- preloader area end -->
 
-    <div class="body-overlay" id="body-overlay"></div>
-    <div class="search-popup" id="search-popup">
-        <form action="home.html" class="search-form">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search.....">
-            </div>
-            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+    
     <!-- //. search Popup -->
 
     <!-- header start -->
@@ -81,12 +95,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-3">
-                    <a class="menu-back-page" href="home.html">
+                    <a class="menu-back-page" href="index.php">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 </div>
                 <div class="col-sm-4 col-6 text-center">
-                    <div class="page-name">Transactions</div>
+                    <div class="page-name">Customers</div>
                 </div>
                 <div class="col-sm-4 col-3 text-right">
                     <div class="search header-search">
@@ -99,10 +113,7 @@
     <!-- header end -->
 
     <!-- page-title stary -->
-    <div class="page-title mg-top-50">
-        
-    </div>
-    
+   
     <!-- page-title end -->
     <div class="add-balance-inner-wrap" id="modal_inner_content">
             <div class="container">
@@ -113,50 +124,106 @@
         </div>
 
 
-
-
-           
-
+               
     <!-- transaction start -->
-    <div class="transaction-area pd-top-36" id="div_parent_cust"> 
+    <div class="transaction-area pd-top-25p" id="div_parent_cust"> 
         <div class="container">
-          
-            <div id="accordion-icon-right" class="accordion-icon icon-01">
-                <ul class="transaction-inner">
-                    <?php
-                        $query = "SELECT * FROM customer";
-                        if ($result = $conn->query($query)) {
-                         
-                            while ($data = $result->fetch_assoc()) {
-                                echo '<li class="ba-single-transaction style-two">
-                                        <div class="details">
-                                            <a class="card-header collapsed align-items-center" data-toggle="collapse" href="#'.$data["c_id"].'">
-                                                <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4></div>
-                                            </a>
-                                             <div class="row card-body collapse pt-0 "  id="'.$data["c_id"].'" data-parent="#accordion-icon-right">
-                                                <div class="col-6">
 
-                                                       <button data-userid="'.$data["c_id"].'" class="ba-send_crate" style="border-radius: 10px;background: green;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-upload"  aria-hidden="true" ></i><br>Send Crate</button>
-                                               </div>
-                                               <div class="col-6">
-                                                   <button data-userid="'.$data["c_id"].'" class="ba-send_crate_empty" style="border-radius: 10px;background: cornflowerblue;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-download" aria-hidden="true"></i>Receive Empty Create</button>
-                                               </div>
+                <br/>
+
+            <form class="searchbar" style="position: fixed;width: 93%;z-index: 999;margin-top: -45px;">
+                <div class="search_chat has-search">
+               
+                    <input class="form-control chat_input" style="box-shadow: -3px 4px 16px 1px rgba(0,0,0,0.74);-webkit-box-shadow: -3px 4px 16px 1px rgba(0,0,0,0.74);-moz-box-shadow: -3px 4px 16px 1px rgba(0,0,0,0.74);" id="search_prod" type="text" placeholder="Search for  Name or ID">
+                </div>
+
+              </form>  
+
+          <div id="accordion-icon-right" class="accordion-icon icon-01">
+                <ul class="transaction-inner">
+               
+                   <div class="" id="trans_list" style="padding-top: 5%">
+
+
+                    <?php 
+                    $get_notifications = "SELECT * FROM customer limit 10";
+                    mysqli_query($conn,"SET CHARACTER SET 'utf8'");
+                    mysqli_query($conn,"SET SESSION collation_connection ='utf8_unicode_ci'");
+
+                    $res = $conn->query($get_notifications);
+                    $numrows = mysqli_num_rows($res);
+                    if($numrows > 9)
+                    {
+                     $loadmore = '<div class="row loadmore_div">
+                               <div class="col-12 text-center">
+                                   <button type="button" class="loadmore btn btn-primary" style="font-size: 10px;height: 30px;line-height: 30px;">Load More</button>
+                               </div>
+                           </div>';
+                    }
+                   
+                  
+                    if($result = $conn->query($get_notifications))
+                    {
+                        while($data = $result->fetch_assoc())
+                        {
+                           
+                           
+ 
+
+                   
+                                echo '<li class="ba-single-transaction well style-two" style="padding:6px 14px;" >
+                                        <div class="details">
+                                            <div class=" align-items-center">
+                                                <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4>
+                                                </div>
+                                                <table class="table table-responsive" style=" table-layout: fixed;margin-top: 3%;margin-bottom: 0px">
+                                                    <tbody style="display: inline-table;width: 100%;">
+                                                         <tr>
+                                                            <td style="border: none"><a href="#" class="btn-small2 ba-send_crate btn-primary-light" style="color:#5cb85c;" data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-share"></i>Send</i></a>
+                                                           </td>
+                                                            <td style="border: none"><a href="#" class="btn-small2 ba-send_crate_empty btn-primary-light" style="color:#dc3545;"  data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-download"></i>Receive</i></a>
+                                                           </td>
+                                                            <td style="border: none"><a href="transaction.php?'.$data["c_id"].'"" class="btn-small2  btn-primary-light"  style="color:#5b32f4;"><i  style="margin-right: 5px " class="fa fa-exchange"></i>History</i></a>
+                                                           </td>
+                                               
+
+                                                           </tr>
+                                                     </tbody>
+                                                </table>
                                             </div>
+                                             
+
                                         </div>
                                     </li>';
+
+
                             }
                         }
 
                     ?>
+ </div>
+          <?php 
+            echo $loadmore;
+         ?>
                     
-                    
-                   
+                
                     
                 </ul>
-           
+
+                <br>
+
            </div>
+
         </div>
+
+ 
+                 
     </div>
+    
+
+
+
+   
     <!-- transaction End -->
 
     <!-- transaction start -->
@@ -165,12 +232,14 @@
 
     
     <!-- transaction End -->
-
-    <div class="btn-wrap mg-top-40">
+    <a href="add_cust.php" class="float">
+    <i class="fa fa-plus my-float"></i>
+    </a>
+    <!-- <div class="btn-wrap " style="display: flex;justify-content: flex-end;">
         <div class="container">
-            <a class="btn-large btn-blue w-100" href="#">More Transctios <i class="fa fa-angle-double-right"></i></a>
+            <a class="btn btn-blue" href="#"><i style="padding-left: 0px" class="fa fa-plus"></i></a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Footer Area -->
     <?php include 'footer.php'?>
@@ -397,6 +466,70 @@
                 
                 return false;
             });
+
+
+               $("#search_prod").on("keyup",function () 
+             
+            {
+                
+                var search_text = $("#search_prod").val();
+                if(search_text == ''){
+                 window.location.href="customer.php";
+                }
+                else
+                {
+                 $.ajax({
+                          url: 'get/search_cust.php',
+                          type: "post",
+                          data:{search_text:search_text},
+                          beforeSend: function (){
+                              $('#loader').css("display","block");
+
+                          },
+                          success: function (data) {
+                              $('#loader').css("display","none");
+                               $('.loadmore_div').css("display","none");
+                                   $("#trans_list").html(data);
+                          }
+                     });
+                }
+                
+
+             });
+
+
+
+               $(".loadmore").click(function() {
+
+                
+
+                    var lastId = $(".well:last").attr("id");
+
+                    $.ajax({
+
+                                url: 'get/get_cust.php?lastId=' + lastId,
+
+                                type: "get",
+
+                                beforeSend: function (){
+
+                                    $('#loader').css("display","block");
+                                    
+                                },
+
+                                success: function (data) {
+                                    $('#loader').css("display","none");
+                                    
+                                         $("#trans_list").append(data);
+
+                                }
+
+                    });
+
+               
+
+                });
+
              
            
     </script>
