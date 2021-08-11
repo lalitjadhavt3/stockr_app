@@ -176,14 +176,14 @@
                                             <div class=" align-items-center">
                                                 <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4>
                                                 </div>
-                                                <table class="table table-responsive" style=" table-layout: fixed;margin-top: 3%;margin-bottom: 0px">
+                                                <table class="table table-responsive" style=" table-layout: fixed;margin-top: 2%;margin-bottom: 0px">
                                                     <tbody style="display: inline-table;width: 100%;">
                                                          <tr>
-                                                            <td style="border: none"><a href="#" class="btn-small2 ba-send_crate btn-primary-light" style="color:#5cb85c;" data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-share"></i>Send</i></a>
+                                                            <td style="border: none;padding:0.25rem"><a href="#" class="btn-small2 ba-send_crate btn-primary-light" style="color:#5cb85c;" data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-share"></i>Send</i></a>
                                                            </td>
-                                                            <td style="border: none"><a href="#" class="btn-small2 ba-send_crate_empty btn-primary-light" style="color:#dc3545;"  data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-download"></i>Receive</i></a>
+                                                            <td style="border: none;padding:0.25rem"><a href="#" class="btn-small2 ba-send_crate_empty btn-primary-light" style="color:#dc3545;"  data-userid="'.$data["c_id"].'" data-toggle="modal" data-target="#viewmodal" ><i  style="margin-right: 5px " class="fa fa-download"></i>Receive</i></a>
                                                            </td>
-                                                            <td style="border: none"><a href="transaction.php?'.$data["c_id"].'"" class="btn-small2  btn-primary-light"  style="color:#5b32f4;"><i  style="margin-right: 5px " class="fa fa-exchange"></i>History</i></a>
+                                                            <td style="border: none;padding:0.25rem"><a href="transaction.php?'.$data["c_id"].'"" class="btn-small2  btn-primary-light"  style="color:#5b32f4;"><i  style="margin-right: 5px " class="fa fa-exchange"></i>History</i></a>
                                                            </td>
                                                
 
