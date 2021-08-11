@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require 'dbconnect.php';
     @session_start();
     //print_r($_SESSION);
@@ -173,6 +173,7 @@
                    
                                 echo '<li class="ba-single-transaction well style-two" style="padding:6px 14px;" >
                                         <div class="details">
+<<<<<<< HEAD
                                             <div class=" align-items-center">
                                                 <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4>
                                                 </div>
@@ -190,6 +191,19 @@
                                                            </tr>
                                                      </tbody>
                                                 </table>
+=======
+                                            <a   style="padding:1rem" class="card-header collapsed align-items-center" data-toggle="collapse" href="#'.$data["c_id"].'">
+                                                <div class="card-title"><h4>'.$data["c_id"].'-'.$data["cust_name"].'</h4></div>
+                                            </a>
+                                             <div class="row card-body collapse pt-0 "  id="'.$data["c_id"].'" data-parent="#accordion-icon-right">
+                                                <div class="col-6">
+
+                                                       <button data-userid="'.$data["c_id"].'" class="ba-send_crate" style="border-radius: 10px;background: green;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-upload"  aria-hidden="true" ></i><br>Send Crate</button>
+                                               </div>
+                                               <div class="col-6">
+                                                   <button data-userid="'.$data["c_id"].'" class="ba-send_crate_empty" style="border-radius: 10px;background: cornflowerblue;color:white;font-weight: 500;padding: 5px;padding-top: 2px" class=""><i class="fa fa-download" aria-hidden="true"></i>Receive Empty Create</button>
+                                               </div>
+>>>>>>> a8e88d57b75978dd03b5cacdb92ad276c1a86128
                                             </div>
                                              
 

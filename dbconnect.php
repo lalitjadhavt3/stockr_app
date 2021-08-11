@@ -1,13 +1,13 @@
 <?php
 
-$dbhost = "localhost";
+/*$dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "";
  $db = "dairy";
-/* $dbhost = "localhost";
+ $dbhost = "localhost";*/
  $dbuser = "kaikotec_banana_admin";
  $dbpass = "SA@admin123";
- $db = "kaikotec_banana";*/
+ $db = "kaikotec_banana";
 
  $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
 
